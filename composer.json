@@ -13,11 +13,11 @@
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "": "./",
-      "src\\": "src/"
+      "app\\":"app"
     }
   },
-  "require": {
+    "require": {
+    "guzzlehttp/guzzle": "^6.2@dev"
   },
   "require-dev": {
   }
