@@ -5,23 +5,22 @@ namespace app\src\Transporters;
 
 class CurlTransport implements TransportInterface
 {
-
     /**
      * @param $url
      * @return mixed
      */
     public function get($url)
     {
-        $connect = curl_init($url);
-        curl_setopt($connect, CURLOPT_HEADER, 0);
-        curl_setopt($connect, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($connect, CURLOPT_URL, $url);
-        curl_setopt($connect, CURLOPT_FOLLOWLOCATION, 1);
+        $resource = curl_init($url);
+        curl_setopt($resource, CURLOPT_HEADER, 0);
+        curl_setopt($resource, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($resource, CURLOPT_URL, $url);
+        curl_setopt($resource, CURLOPT_FOLLOWLOCATION, 1);
 
-        $data = curl_exec($connect);
+        $content = curl_exec($resource);
 
-        curl_close($connect);
+        curl_close($resource);
 
-        return $data;
+        return $content;
     }
 }
