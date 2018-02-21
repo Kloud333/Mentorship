@@ -1,8 +1,10 @@
 <?php
 
+use app\src\Parsers\DomCrawlerParser;
 use app\src\Parsers\ParserFilmix;
 use app\src\Scrapper;
 use app\src\Transporters\CurlTransport;
+use app\src\Transporters\GuzzleTransportAdapter;
 
 require '../vendor/autoload.php';
 
@@ -24,7 +26,7 @@ require '../vendor/autoload.php';
 //$t = new CurlTransport();
 //$p = new ParserFilmix();
 
-$scrapper = new Scrapper(new CurlTransport(), new ParserFilmix());
+$scrapper = new Scrapper(new GuzzleTransportAdapter(), new DomCrawlerParser);
 
 $film = $scrapper->get('https://filmix.me/real_tv/104350-discovery-ulichnye-gonki.html');
 
