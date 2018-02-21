@@ -2,7 +2,6 @@
 
 namespace app\src\Parsers;
 
-
 use app\src\Models\Movie;
 
 class ParserFilmix implements ParserInterface
@@ -28,6 +27,5 @@ class ParserFilmix implements ParserInterface
         $movie->description = $movie_description;
 
         return $movie;
-
     }
 }

@@ -5,8 +5,8 @@ namespace app\src\Parsers;
 interface ParserInterface
 {
     /**
-     * @param $data
+     * @param $siteContent
      * @return mixed
      */
-    public function parse($data);
+    public function parse($siteContent);
 }
