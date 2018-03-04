@@ -1,10 +1,6 @@
 <?php
 
-use app\src\Parsers\DomCrawlerParser;
-use app\src\Parsers\ParserFilmix;
-use app\src\Scrapper;
-use app\src\Transporters\CurlTransport;
-use app\src\Transporters\GuzzleTransportAdapter;
+use app\src\ScrapperFactory;
 
 require '../vendor/autoload.php';
 
@@ -23,18 +19,21 @@ require '../vendor/autoload.php';
 
 <?php
 
-//$t = new CurlTransport();
-//$p = new ParserFilmix();
+$factory = new ScrapperFactory();
 
-$scrapper = new Scrapper(new GuzzleTransportAdapter(), new DomCrawlerParser);
+$filmixPage = $factory->create('filmix')->get('https://filmix.me/real_tv/104350-discovery-ulichnye-gonki.html');
 
-$film = $scrapper->get('https://filmix.me/real_tv/104350-discovery-ulichnye-gonki.html');
+$kinohdPage = $factory->create('kinokrad')->get('http://kinokrad.co/315898-moy-malenkiy-poni.html');
 
 ?>
 
-<h1><?php echo $film->title ?></h1>
-<img src="<? echo $film->poster ?>"/>
-<p><? echo $film->description ?></p>
+<h1><?php echo $filmixPage->getTitle() ?></h1>
+<img src="<? echo $filmixPage->getPoster() ?>"/>
+<p><? echo $filmixPage->getDescription() ?></p>
+
+<h1><?php echo $kinohdPage->getTitle() ?></h1>
+<img src="<? echo $kinohdPage->getPoster() ?>"/>
+<p><? echo $kinohdPage->getDescription() ?></p>
 
 </body>
 </html>
