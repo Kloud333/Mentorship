@@ -4,20 +4,27 @@ namespace app\src;
 
 
 use app\src\Models\Movie;
-use app\src\Parsers\ParserInterface;
-use app\src\Transporters\TransportInterface;
+use app\src\Parsers\ParserAdapter;
+use app\src\Transporters\TransportAdapter;
 
 class Scrapper
 {
+    /**
+     * @var TransportAdapter
+     */
     public $transporter;
+
+    /**
+     * @var ParserAdapter
+     */
     public $parser;
 
     /**
      * Scrapper constructor.
-     * @param TransportInterface $transporter
-     * @param ParserInterface $parser
+     * @param TransportAdapter $transporter
+     * @param ParserAdapter $parser
      */
-    public function __construct(TransportInterface $transporter, ParserInterface $parser)
+    public function __construct(TransportAdapter $transporter, ParserAdapter $parser)
     {
         $this->transporter = $transporter;
         $this->parser = $parser;
