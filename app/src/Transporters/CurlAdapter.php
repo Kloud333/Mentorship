@@ -3,7 +3,7 @@
 namespace app\src\Transporters;
 
 
-class CurlTransport implements TransportInterface
+class CurlAdapter implements TransportAdapter
 {
     /**
      * @param $url
