@@ -2,11 +2,13 @@
 
 namespace app\src\Parsers;
 
-interface ParserInterface
+use app\src\Models\Movie;
+
+interface ParserAdapter
 {
     /**
      * @param $siteContent
      * @return mixed
      */
-    public function parse($siteContent);
+    public function parse($siteContent) :Movie ;
 }
