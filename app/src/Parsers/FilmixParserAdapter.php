@@ -4,7 +4,7 @@ namespace app\src\Parsers;
 
 use app\src\Models\Movie;
 
-class ParserFilmix implements ParserInterface
+class FilmixParserAdapter implements ParserAdapter
 {
     /**
      * @param $siteContent
@@ -22,9 +22,9 @@ class ParserFilmix implements ParserInterface
 
         $movie = new Movie();
 
-        $movie->title = $movie_title;
-        $movie->poster = $movie_poster;
-        $movie->description = $movie_description;
+        $movie->setTitle($movie_title);
+        $movie->setPoster($movie_poster);
+        $movie->setDescription($movie_description);
 
         return $movie;
     }
