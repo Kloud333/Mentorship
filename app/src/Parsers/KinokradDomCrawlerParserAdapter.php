@@ -5,7 +5,7 @@ namespace app\src\Parsers;
 use app\src\Models\Movie;
 use Symfony\Component\DomCrawler\Crawler;
 
-class DomCrawlerParserAdapter implements ParserAdapter
+class KinokradDomCrawlerParserAdapter implements ParserAdapterInterface
 {
     /**
      * @param $siteContent
@@ -19,11 +19,10 @@ class DomCrawlerParserAdapter implements ParserAdapter
         $movie_poster = $crawler->filter('.bigposter img')->attr('src');
         $movie_description = $crawler->filter('div.fulltext')->text();
 
-        $movie = new Movie();
-
-        $movie->setTitle($movie_title);
-        $movie->setPoster($movie_poster);
-        $movie->setDescription($movie_description);
+        $movie = (new Movie())
+            ->setTitle($movie_title)
+            ->setPoster($movie_poster)
+            ->setDescription($movie_description);
 
         return $movie;
     }
