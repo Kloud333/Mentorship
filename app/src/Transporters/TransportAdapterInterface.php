@@ -2,7 +2,7 @@
 
 namespace app\src\Transporters;
 
-interface TransportAdapter
+interface TransportAdapterInterface
 {
     /**
      * @param $url
