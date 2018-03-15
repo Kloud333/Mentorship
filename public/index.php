@@ -27,13 +27,13 @@ $kinohdPage = $factory->create('kinokrad')->get('http://kinokrad.co/315898-moy-m
 
 ?>
 
-<h1><?php echo $filmixPage->getTitle() ?></h1>
-<img src="<? echo $filmixPage->getPoster() ?>"/>
-<p><? echo $filmixPage->getDescription() ?></p>
+<h1><?= $filmixPage->getTitle() ?></h1>
+<img src="<?= $filmixPage->getPoster() ?>"/>
+<p><?= $filmixPage->getDescription() ?></p>
 
-<h1><?php echo $kinohdPage->getTitle() ?></h1>
-<img src="<? echo $kinohdPage->getPoster() ?>"/>
-<p><? echo $kinohdPage->getDescription() ?></p>
+<h1><?= $kinohdPage->getTitle() ?></h1>
+<img src="<?= $kinohdPage->getPoster() ?>"/>
+<p><?= $kinohdPage->getDescription() ?></p>
 
 </body>
 </html>
