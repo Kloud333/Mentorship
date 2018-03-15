@@ -4,7 +4,7 @@ namespace app\src\Parsers;
 
 use app\src\Models\Movie;
 
-class FilmixParserAdapter implements ParserAdapter
+class FilmixParserAdapter implements ParserAdapterInterface
 {
     /**
      * @param $siteContent
@@ -20,11 +20,10 @@ class FilmixParserAdapter implements ParserAdapter
         $movie_poster = iconv("windows-1251", "utf-8", $parsed_poster[1][0]);
         $movie_description = iconv("windows-1251", "utf-8", $parsed_description[1][0]);
 
-        $movie = new Movie();
-
-        $movie->setTitle($movie_title);
-        $movie->setPoster($movie_poster);
-        $movie->setDescription($movie_description);
+        $movie = (new Movie())
+            ->setTitle($movie_title)
+            ->setPoster($movie_poster)
+            ->setDescription($movie_description);
 
         return $movie;
     }
