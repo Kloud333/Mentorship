@@ -4,7 +4,7 @@ namespace app\src\Parsers;
 
 use app\src\Models\Movie;
 
-class FilmixParserAdapter implements ParserAdapterInterface
+class FilmixParserStrategy implements ParserInterface
 {
     /**
      * @param $siteContent
