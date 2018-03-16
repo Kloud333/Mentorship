@@ -4,7 +4,7 @@ namespace app\src\Parsers;
 
 use app\src\Models\Movie;
 
-interface ParserAdapterInterface
+interface ParserInterface
 {
     /**
      * @param $siteContent
