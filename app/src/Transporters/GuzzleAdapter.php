@@ -4,7 +4,7 @@ namespace app\src\Transporters;
 
 use GuzzleHttp\Client;
 
-class GuzzleAdapter implements TransportAdapterInterface
+class GuzzleAdapter implements TransportInterface
 {
     /**
      * @param $url

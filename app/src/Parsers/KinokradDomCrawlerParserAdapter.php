@@ -5,7 +5,7 @@ namespace app\src\Parsers;
 use app\src\Models\Movie;
 use Symfony\Component\DomCrawler\Crawler;
 
-class KinokradDomCrawlerParserAdapter implements ParserAdapterInterface
+class KinokradDomCrawlerParserAdapter implements ParserInterface
 {
     /**
      * @param $siteContent
