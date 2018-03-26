@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Unit Tests" tests="1" assertions="0" errors="0" failures="1" skipped="0" time="0.010411">
+    <testsuite name="tests\Unit\ParserTest" file="D:\Programming\WebServer\domains\mentorship-parser\tests\Unit\ParserTest.php" tests="1" assertions="0" errors="0" failures="1" skipped="0" time="0.010411">
+      <testcase name="Warning" assertions="0" time="0.010411">
+        <warning type="PHPUnit\Framework\Warning">Warning
+No tests found in class "tests\Unit\ParserTest".
+
+</warning>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>
