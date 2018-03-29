@@ -47,11 +47,12 @@ class ParsersTest extends Base
     /**
      * @throws \Exception
      * @covers \app\src\Parsers\FilmixParserStrategy::parse
+     * @dataProvider filmixDataProvider
      */
-    public function testFilmixParserGoodResultClass()
+    public function testFilmixParserGoodResultClass($data)
     {
         $scrapper = new FilmixParserStrategy();
-        $result = $scrapper->parse('some_data');
+        $result = $scrapper->parse($data);
 
         $this->assertInstanceOf(Movie::class, $result);
     }
