@@ -9,6 +9,9 @@ use app\src\Parsers\KinokradDomCrawlerParserAdapter;
 class ParsersTest extends Base
 {
 
+    /**
+     * @return array
+     */
     public function filmixDataProvider()
     {
         return [
@@ -16,6 +19,9 @@ class ParsersTest extends Base
         ];
     }
 
+    /**
+     * @return array
+     */
     public function kinokradDataProvider()
     {
         return [
@@ -25,6 +31,7 @@ class ParsersTest extends Base
 
     /**
      * @dataProvider filmixDataProvider
+     * @covers       \app\src\Parsers\FilmixParserStrategy::parse
      */
     public function testFilmixParserGoodResult($data)
     {
@@ -37,6 +44,10 @@ class ParsersTest extends Base
         $this->assertEquals($result->getDescription(), 'description');
     }
 
+    /**
+     * @throws \Exception
+     * @covers \app\src\Parsers\FilmixParserStrategy::parse
+     */
     public function testFilmixParserGoodResultClass()
     {
         $scrapper = new FilmixParserStrategy();
@@ -47,6 +58,7 @@ class ParsersTest extends Base
 
     /**
      * @dataProvider kinokradDataProvider
+     * @covers       \app\src\Parsers\KinokradDomCrawlerParserAdapter::parse
      */
     public function testKinokradParserGoodResult($data)
     {
@@ -59,12 +71,14 @@ class ParsersTest extends Base
         $this->assertEquals($result->getDescription(), 'description');
     }
 
+    /**
+     * @covers \app\src\Parsers\KinokradDomCrawlerParserAdapter::parse
+     * @expectedException \InvalidArgumentException
+     */
     public function testKinokradParserGoodResultClass()
     {
         $scrapper = new KinokradDomCrawlerParserAdapter();
-
-        $this->expectException(\InvalidArgumentException::class);
-        $result = $scrapper->parse('');
+        $scrapper->parse('');
     }
 
 

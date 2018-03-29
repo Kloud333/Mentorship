@@ -7,7 +7,10 @@ use app\src\Scrapper;
 
 class ScrapperTest extends Base
 {
-
+    /**
+     * @throws \Exception
+     * @covers \app\src\Scrapper::get
+     */
     public function testScrapper()
     {
 
@@ -28,7 +31,11 @@ class ScrapperTest extends Base
             ->will($this->returnValue(new Movie()));
 
         $parser = new Scrapper($curlStrategy, $filmixParser);
+
         $this->assertInstanceOf(Movie::class, $parser->get('http'));
+
+        $this->assertTrue(method_exists($parser->parser,'parse'));
+        $this->assertTrue(method_exists($parser->transporter,'get'));
 
     }
 

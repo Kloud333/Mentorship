@@ -8,6 +8,10 @@ use app\src\Transporters\GuzzleAdapter;
 class AdaptersTest extends Base
 {
 
+    /**
+     * @throws \Exception
+     * @covers \app\src\Transporters\CurlStrategy::get
+     */
     public function testCurlGoodData()
     {
         $transporter = new CurlStrategy();
@@ -16,6 +20,10 @@ class AdaptersTest extends Base
         $this->assertTrue(is_string($result));
     }
 
+    /**
+     * @throws \Exception
+     * @covers \app\src\Transporters\CurlStrategy::get
+     */
     public function testCurlBadData()
     {
         $transporter = new CurlStrategy();
@@ -24,6 +32,10 @@ class AdaptersTest extends Base
         $this->assertFalse(is_string($result));
     }
 
+    /**
+     * @throws \Exception
+     * @covers \app\src\Transporters\GuzzleAdapter::get
+     */
     public function testGuzzleGoodData()
     {
         $transporter = new GuzzleAdapter();
@@ -32,11 +44,13 @@ class AdaptersTest extends Base
         $this->assertTrue(is_string($result));
     }
 
+    /**
+     * @covers \app\src\Transporters\GuzzleAdapter::get
+     * @expectedException \GuzzleHttp\Exception\ConnectException
+     */
     public function testGuzzleBadData()
     {
         $transporter = new GuzzleAdapter();
-
-        $this->expectException(\GuzzleHttp\Exception\ConnectException::class);
         $transporter->get('http://...');
     }
 
