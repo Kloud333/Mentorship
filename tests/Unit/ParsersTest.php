@@ -51,7 +51,7 @@ class ParsersTest extends Base
     public function testFilmixParserGoodResultClass()
     {
         $scrapper = new FilmixParserStrategy();
-        $result = $scrapper->parse('');
+        $result = $scrapper->parse('some_data');
 
         $this->assertInstanceOf(Movie::class, $result);
     }
