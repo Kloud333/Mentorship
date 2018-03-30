@@ -6,7 +6,7 @@ php:
 dist: trusty
 
 before_script:
-  - composer update
+  - composer install
 
 script:
   - vendor/bin/phpunit
