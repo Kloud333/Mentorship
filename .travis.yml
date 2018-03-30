@@ -8,6 +8,7 @@ before_script:
 
 script:
   - vendor/bin/phpunit
+  - sonar-scanner
 
 dist: trusty
 
@@ -17,5 +18,3 @@ addons:
     token:
       secure: eca01abf9f5364b5b90f105eb795e6d3005dd220
 
-script:
-  - sonar-scanner
