@@ -52,6 +52,9 @@ class AdaptersTest extends Base
     {
         $transporter = new GuzzleAdapter();
         $transporter->get('http://...');
+
+//        $client = new Client();
+
     }
 
 }

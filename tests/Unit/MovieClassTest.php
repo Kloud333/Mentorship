@@ -34,12 +34,18 @@ class MovieClassTest extends Base
         $this->assertClassHasAttribute('description', Movie::class);
     }
 
+
+//    Додати дата провайдер з хорошими і поганими даними
+
+
+
+
     /**
      * @throws \Exception
      * @covers \app\src\Models\Movie::setTitle
      * @covers \app\src\Models\Movie::getTitle
      */
-    public function getTitle()
+    public function testMovieMethodTitle()
     {
         $movie_title = 'title';
         $movie = new Movie();

@@ -14,13 +14,17 @@ class ScrapperTest extends Base
     public function testScrapper()
     {
 
+
+//        Розібратись з конструктором
+//        Протестити чи метод parser вертає те що потрібно і transporter теж
+
         $curlStrategy = $this->getMockBuilder('app\src\Transporters\CurlStrategy')
             ->setMethods(['get'])
             ->getMock();
 
         $curlStrategy->expects($this->any())
             ->method('get')
-            ->will($this->returnValue('data'));
+            ->will($this->returnValue('data'));  // - передати правдиві дані через дата провайдер
 
         $filmixParser = $this->getMockBuilder('app\src\Parsers\FilmixParserStrategy')
             ->setMethods(['parse'])

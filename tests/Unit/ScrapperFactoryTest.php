@@ -8,6 +8,10 @@ use app\src\ScrapperFactory;
 class ScrapperFactoryTest extends Base
 {
 
+
+//    написати тест чи сріейт повертає обєкт скраппер
+//    на вхід зробити дата провайдер
+
     /**
      * @throws \Exception
      * @covers \app\src\ScrapperFactory::create

@@ -9,6 +9,8 @@ use app\src\Parsers\KinokradDomCrawlerParserAdapter;
 class ParsersTest extends Base
 {
 
+
+//    додати хороші погані тести мабуть через дата провайдер
     /**
      * @return array
      */
