@@ -16,5 +16,5 @@ addons:
   sonarcloud:
     organization: "kloud333-github"
     token:
-      secure: eca01abf9f5364b5b90f105eb795e6d3005dd220
+      secure: c5f85c8c8fb478ef4f0b9baaa94d078930fd7a4c
 
