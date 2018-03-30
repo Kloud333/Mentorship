@@ -3,12 +3,14 @@ language: php
 php:
   - 7.1
 
+dist: trusty
+
 before_script:
   - composer update
 
-
-
-dist: trusty
+script:
+  - vendor/bin/phpunit
+  - sonar-scanner
 
 addons:
   sonarcloud:
@@ -16,8 +18,3 @@ addons:
     token:
       secure: ba2c6a35be12fdd0e7113e6f42ec004e04a338e7
 
-
-
-script:
-  - vendor/bin/phpunit
-  - sonar-scanner
