@@ -6,6 +6,28 @@ use app\src\Models\Movie;
 
 class MovieClassTest extends Base
 {
+    /**
+     * @return array
+     */
+    public function goodMovieDataProvider()
+    {
+        return [
+            ['some data'],
+            ['']
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function badMovieDataProvider()
+    {
+        return [
+            [null],
+            [[]],
+            [5]
+        ];
+    }
 
     /**
      * @throws \Exception
@@ -34,53 +56,95 @@ class MovieClassTest extends Base
         $this->assertClassHasAttribute('description', Movie::class);
     }
 
-
-//    Додати дата провайдер з хорошими і поганими даними
-
-
-
-
     /**
-     * @throws \Exception
+     * @dataProvider goodMovieDataProvider
+     * @param $data
      * @covers \app\src\Models\Movie::setTitle
      * @covers \app\src\Models\Movie::getTitle
      */
-    public function testMovieMethodTitle()
+    public function testGoodDataMovieTitle($data)
     {
-        $movie_title = 'title';
         $movie = new Movie();
 
-        $movie->setTitle($movie_title);
-        $this->assertEquals($movie_title, $movie->getTitle());
+        $movie->setTitle($data);
+        $this->assertEquals($data, $movie->getTitle());
     }
 
     /**
-     * @throws \Exception
+     * @dataProvider badMovieDataProvider
+     * @param $data
+     * @covers \app\src\Models\Movie::setTitle
+     * @covers \app\src\Models\Movie::getTitle
+    //     * @expectedException TypeError - як похендлити
+     */
+    public function testBadDataMovieTitle($data)
+    {
+        $movie = new Movie();
+
+//        $movie->setTitle($data);
+//        $this->assertEquals($data, $movie->getTitle());
+
+        $this->markTestIncomplete();
+    }
+
+    /**
+     * @dataProvider goodMovieDataProvider
+     * @param $data
      * @covers \app\src\Models\Movie::setPoster
      * @covers \app\src\Models\Movie::getPoster
      */
-    public function testMovieMethodPoster()
+    public function testGoodDataMoviePoster($data)
     {
-        $movie_poster = 'http...';
         $movie = new Movie();
 
-        $movie->setPoster($movie_poster);
-        $this->assertEquals($movie_poster, $movie->getPoster());
+        $movie->setPoster($data);
+        $this->assertEquals($data, $movie->getPoster());
     }
 
     /**
-     * @throws \Exception
+     * @dataProvider badMovieDataProvider
+     * @param $data
+     * @covers  \app\src\Models\Movie::setPoster
+     * @covers  \app\src\Models\Movie::getPoster
+     */
+    public function testBadDataMoviePoster($data)
+    {
+        $movie = new Movie();
+
+//        $movie->setPoster($data);
+//        $this->assertEquals($data, $movie->getPoster());
+
+        $this->markTestIncomplete();
+    }
+
+    /**
+     * @dataProvider goodMovieDataProvider
+     * @param $data
      * @covers \app\src\Models\Movie::setDescription
      * @covers \app\src\Models\Movie::getDescription
      */
-    public function testMovieMethodDescription()
+    public function testGoodDataMovieDescription($data)
     {
-        $movie_description = 'description';
         $movie = new Movie();
 
+        $movie->setDescription($data);
+        $this->assertEquals($data, $movie->getDescription());
+    }
 
-        $movie->setDescription($movie_description);
-        $this->assertEquals($movie_description, $movie->getDescription());
+    /**
+     * @dataProvider badMovieDataProvider
+     * @param $data
+     * @covers \app\src\Models\Movie::setDescription
+     * @covers \app\src\Models\Movie::getDescription
+     */
+    public function testBadDataMovieDescription($data)
+    {
+        $movie = new Movie();
+
+//        $movie->setDescription($data);
+//        $this->assertEquals($data, $movie->getDescription());
+
+        $this->markTestIncomplete();
     }
 
 }

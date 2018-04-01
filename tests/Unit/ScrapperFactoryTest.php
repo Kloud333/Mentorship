@@ -2,38 +2,59 @@
 
 namespace tests\Unit;
 
-
 use app\src\ScrapperFactory;
 
 class ScrapperFactoryTest extends Base
 {
 
-
-//    написати тест чи сріейт повертає обєкт скраппер
-//    на вхід зробити дата провайдер
-
     /**
-     * @throws \Exception
-     * @covers \app\src\ScrapperFactory::create
+     * @return array
      */
-    public function testScrapperFactoryForExistingDomains()
+    public function goodScrapperFactoryDataProvider()
     {
-        $factory = new ScrapperFactory();
-
-        $this->assertTrue(method_exists($factory->create('filmix'),'get'));
-        $this->assertTrue(method_exists($factory->create('kinokrad'),'get'));
+        return [
+            ['filmix'],
+            ['kinokrad']
+        ];
     }
 
     /**
-     * @throws \Exception
+     * @return array
+     */
+    public function badScrapperFactorProvider()
+    {
+        return [
+            [5],
+            [null],
+            ['']
+        ];
+    }
+
+    /**
+     * @dataProvider goodScrapperFactoryDataProvider
+     * @param $data
+     * @covers \app\src\ScrapperFactory::create
+     */
+    public function testGoodResultScrapperFactory($data)
+    {
+        $factory = new ScrapperFactory();
+
+        $this->assertTrue(is_a($factory->create($data), 'app\src\Scrapper'));
+
+    }
+
+    /**
+     * @dataProvider badScrapperFactorProvider
+     * @param $data
      * @covers \app\src\ScrapperFactory::create
      * @expectedException \Exception
      */
-    public function testScrapperFactoryForNotExistingDomains()
+    public function testBadResultScrapperFactory($data)
     {
         $factory = new ScrapperFactory();
-        $this->assertFalse(method_exists($factory->create('kinogo'),'get'));
-    }
+//        $factory->create($data);
 
+        $this->markTestIncomplete();
+    }
 
 }

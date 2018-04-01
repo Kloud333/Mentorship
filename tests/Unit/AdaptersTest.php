@@ -9,6 +9,46 @@ class AdaptersTest extends Base
 {
 
     /**
+     * @return array
+     */
+    public function curlGoodDataProvider()
+    {
+        return [
+            ['<h1 class="name" itemprop="name">title</h1> <img src="https..." class="poster poster-tooltip" itemprop="image" /> <div class="full-story">description</div><div']
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function curlBadDataProvider()
+    {
+        return [
+            [5]
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function guzzleGoodDataProvider()
+    {
+        return [
+            ['<div class="fallsttitle"><h1 itemprop="name">title</h1></div><div class="bigposter"> <img title="" alt="" src="https..." itemprop=""></div><div class="fulltext" id="fulltext" itemprop="description">description</div>']
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function guzzleBadDataProvider()
+    {
+        return [
+            [5]
+        ];
+    }
+
+    /**
      * @throws \Exception
      * @covers \app\src\Transporters\CurlStrategy::get
      */
@@ -51,10 +91,10 @@ class AdaptersTest extends Base
     public function testGuzzleBadData()
     {
         $transporter = new GuzzleAdapter();
+
         $transporter->get('http://...');
 
-//        $client = new Client();
-
+//        $client = new Client(); - як створити мок Client
     }
 
 }

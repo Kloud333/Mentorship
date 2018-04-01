@@ -2,19 +2,16 @@
 
 namespace tests\Unit;
 
-use app\src\Models\Movie;
 use app\src\Parsers\FilmixParserStrategy;
 use app\src\Parsers\KinokradDomCrawlerParserAdapter;
 
 class ParsersTest extends Base
 {
 
-
-//    додати хороші погані тести мабуть через дата провайдер
     /**
      * @return array
      */
-    public function filmixDataProvider()
+    public function goodFilmixDataProvider()
     {
         return [
             ['<h1 class="name" itemprop="name">title</h1> <img src="https..." class="poster poster-tooltip" itemprop="image" /> <div class="full-story">description</div><div']
@@ -24,7 +21,18 @@ class ParsersTest extends Base
     /**
      * @return array
      */
-    public function kinokradDataProvider()
+    public function badFilmixDataProvider()
+    {
+        return [
+            [5],
+            [null]
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function goodKinokradDataProvider()
     {
         return [
             ['<div class="fallsttitle"><h1 itemprop="name">title</h1></div><div class="bigposter"> <img title="" alt="" src="https..." itemprop=""></div><div class="fulltext" id="fulltext" itemprop="description">description</div>']
@@ -32,57 +40,75 @@ class ParsersTest extends Base
     }
 
     /**
-     * @dataProvider filmixDataProvider
+     * @return array
+     */
+    public function badKinokradDataProvider()
+    {
+        return [
+            [5],
+            [null]
+        ];
+    }
+
+    /**
+     * @dataProvider goodFilmixDataProvider
      * @covers       \app\src\Parsers\FilmixParserStrategy::parse
+     * @param $data
      */
-    public function testFilmixParserGoodResult($data)
+    public function testGoodResultFilmixParser($data)
     {
         $scrapper = new FilmixParserStrategy();
 
         $result = $scrapper->parse($data);
 
-        $this->assertEquals($result->getTitle(), 'title');
-        $this->assertEquals($result->getPoster(), 'https...');
-        $this->assertEquals($result->getDescription(), 'description');
+        $this->assertEquals('title', $result->getTitle());
+        $this->assertEquals('https...', $result->getPoster());
+        $this->assertEquals('description', $result->getDescription());
     }
 
     /**
-     * @throws \Exception
+     * @dataProvider badFilmixDataProvider
      * @covers \app\src\Parsers\FilmixParserStrategy::parse
-     * @dataProvider filmixDataProvider
+     * @param $data
      */
-    public function testFilmixParserGoodResultClass($data)
+    public function testBadResultFilmixParser($data)
     {
         $scrapper = new FilmixParserStrategy();
-        $result = $scrapper->parse($data);
 
-        $this->assertInstanceOf(Movie::class, $result);
+//        $scrapper->parse($data);
+
+        $this->markTestIncomplete();
     }
 
     /**
-     * @dataProvider kinokradDataProvider
-     * @covers       \app\src\Parsers\KinokradDomCrawlerParserAdapter::parse
+     * @dataProvider goodKinokradDataProvider
+     * @covers \app\src\Parsers\KinokradDomCrawlerParserAdapter::parse
+     * @param $data
      */
-    public function testKinokradParserGoodResult($data)
+    public function testGoodResultKinokradParser($data)
     {
         $scrapper = new KinokradDomCrawlerParserAdapter();
 
         $result = $scrapper->parse($data);
 
-        $this->assertEquals($result->getTitle(), 'title');
-        $this->assertEquals($result->getPoster(), 'https...');
-        $this->assertEquals($result->getDescription(), 'description');
+        $this->assertEquals('title', $result->getTitle());
+        $this->assertEquals('https...', $result->getPoster());
+        $this->assertEquals('description', $result->getDescription());
     }
 
     /**
+     * @dataProvider badKinokradDataProvider
      * @covers \app\src\Parsers\KinokradDomCrawlerParserAdapter::parse
+     * @param $data
      * @expectedException \InvalidArgumentException
      */
-    public function testKinokradParserGoodResultClass()
+    public function testBadResultKinokradParser($data)
     {
         $scrapper = new KinokradDomCrawlerParserAdapter();
-        $scrapper->parse('');
-    }
 
+//        $scrapper->parse($data);
+
+        $this->markTestIncomplete();
+    }
 
 }
