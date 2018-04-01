@@ -8,5 +8,5 @@ interface TransportInterface
      * @param $url
      * @return mixed
      */
-    public function get($url);
+    public function get(string $url);
 }

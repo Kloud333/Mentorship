@@ -10,7 +10,7 @@ class FilmixParserStrategy implements ParserInterface
      * @param $siteContent
      * @return Movie
      */
-    public function parse($siteContent): Movie
+    public function parse(string $siteContent): Movie
     {
         preg_match_all('#<h1 class="name" itemprop="name">(.*)</h1>#', $siteContent, $parsed_title);
         preg_match_all('#<img src="(.*)" class="poster poster-tooltip" itemprop="image"#', $siteContent, $parsed_poster);

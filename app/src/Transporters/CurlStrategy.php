@@ -2,14 +2,13 @@
 
 namespace app\src\Transporters;
 
-
 class CurlStrategy implements TransportInterface
 {
     /**
      * @param $url
      * @return mixed
      */
-    public function get($url)
+    public function get(string $url)
     {
         $resource = curl_init($url);
         curl_setopt($resource, CURLOPT_HEADER, 0);

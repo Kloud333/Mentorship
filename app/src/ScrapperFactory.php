@@ -15,7 +15,7 @@ class ScrapperFactory
      * @return Scrapper
      * @throws Exception
      */
-    public function create($domain)
+    public function create(string $domain)
     {
         switch ($domain) {
             case 'filmix':

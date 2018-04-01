@@ -10,5 +10,5 @@ interface ParserInterface
      * @param $siteContent
      * @return mixed
      */
-    public function parse($siteContent): Movie;
+    public function parse(string $siteContent): Movie;
 }

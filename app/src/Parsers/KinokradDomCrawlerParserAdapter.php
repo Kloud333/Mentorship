@@ -11,7 +11,7 @@ class KinokradDomCrawlerParserAdapter implements ParserInterface
      * @param $siteContent
      * @return Movie
      */
-    public function parse($siteContent): Movie
+    public function parse(string $siteContent): Movie
     {
         $crawler = new Crawler($siteContent);
 

@@ -10,11 +10,10 @@ class GuzzleAdapter implements TransportInterface
      * @param $url
      * @return mixed
      */
-    public function get($url)
+    public function get(string $url)
     {
         $client = new Client();
-        $response = $client->get($url);
 
-        return $response->getBody()->getContents();
+        return $client->get($url)->getBody()->getContents();
     }
 }
