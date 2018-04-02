@@ -24,9 +24,7 @@ class ScrapperFactoryTest extends Base
     public function badScrapperFactorProvider()
     {
         return [
-            [5],
-            [null],
-            ['']
+            [vk],
         ];
     }
 
@@ -52,9 +50,7 @@ class ScrapperFactoryTest extends Base
     public function testBadResultScrapperFactory($data)
     {
         $factory = new ScrapperFactory();
-//        $factory->create($data);
-
-        $this->markTestIncomplete();
+        $factory->create($data);
     }
 
 }
